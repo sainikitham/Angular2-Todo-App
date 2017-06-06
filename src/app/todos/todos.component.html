@@ -1,0 +1,22 @@
+<div class="body">
+  <div *ngIf="appState == 'default'">
+    <h2>Add a Task</h2>
+    <form (submit)="addtodo()">
+      <input type="text" class="form-control" name="text" [(ngModel)]="text">
+    </form>
+  </div>
+  <div *ngIf="appState == 'edit'">
+    <h2>Edit a Task</h2>
+    <form (submit)="updatetodo()">
+      <input type="text" class="form-control" name="text" [(ngModel)]="text">
+    </form>
+  </div>
+  <div class="container">
+    <h2 class="text-center">Todo List</h2>
+    <ul>
+      <li *ngFor="let todo of todos; let i = index" class="well">
+        <span (click)="edittodo(todo.text)">{{todo.text}}</span> &nbsp;&nbsp; <button class="btn btn-danger btn-xs"(click)="deletetodo(i)">X</button>
+      </li>
+    </ul>
+  </div>
+</div>
